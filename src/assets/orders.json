@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "customerName": "Kalp",
+        "address": "211 , Satya Niketan, Ring Road",
+        "city": "Delhi",
+        "shipper": "John",
+        "orderDate": {
+            "day": 24,
+            "month": 3,
+            "year": 2018
+          },
+        "orderTotal": 10000
+    },
+    {
+        "id": 2,
+        "customerName": "Ayushi",
+        "address": "B/302, Kailash Esplanade, Lbs Marg, Ghatkopar (west)",
+        "city": "Mumbai",
+        "shipper": "Christian",
+        "orderDate": {
+            "day": 19,
+            "month": 7,
+            "year": 2018
+          },
+        "orderTotal": 20000
+    },
+    {
+        "id": 3,
+        "customerName": "Mehul",
+        "address": "53 , Raja S C Mullick Road, Garia",
+        "city": "Kolkata",
+        "shipper": "Mathew",
+        "orderDate": {
+            "day": 29,
+            "month": 12,
+            "year": 2018
+          },
+        "orderTotal": 30000
+    },
+    {
+        "id": 4,
+        "customerName": "Kishan",
+        "address": "Shop No 45, Main Road, G B Road",
+        "city": "Mysore",
+        "shipper": "Michel",
+        "orderDate": {
+            "day": 12,
+            "month": 1,
+            "year": 2019
+          },
+        "orderTotal": 40000
+    },
+    {
+        "id": 5,
+        "customerName": "Nirali",
+        "address": "Central Hospital Road, Near Vishal Marriage Hall, Ulhasnagar",
+        "city": "Pune",
+        "shipper": "Mike",
+        "orderDate": {
+            "day": 20,
+            "month": 8,
+            "year": 2019
+          },
+        "orderTotal": 50000
+    },
+    {
+        "id": 6,
+        "customerName": "Riya",
+        "address": "Bhakti Nagar Station, 10, Bhaktinagar Station, Bhakti Nagar",
+        "city": "Rajkot",
+        "shipper": "Cristi",
+        "orderDate": {
+            "day": 10,
+            "month": 2,
+            "year": 2020
+          },
+        "orderTotal": 60000
+    }
+]

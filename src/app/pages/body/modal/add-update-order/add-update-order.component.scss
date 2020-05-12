@@ -1,0 +1,35 @@
+.row {
+    input {
+        width: 100%;
+        height: 40px;
+        padding-left: 10px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        outline: 0;
+    }
+
+    .col-md-6 {
+        .orderDate {
+            input {
+                width: 83%;
+            }
+            .input-group-append {
+                position: absolute;
+                right: 0;
+                height: 40px;
+                width: 15%;
+                button {
+                    width: 100%;
+                    background-color: white;
+                    border-radius: 5px;
+                    color: #5c5b5b;
+                    outline: 0;
+                }
+            }
+        }
+    }
+}
+
+.btn-success {
+    float: right;
+}

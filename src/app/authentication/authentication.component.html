@@ -1,0 +1,13 @@
+<div class="fluid-container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="../../assets/background.png">
+        </div>
+        <div class="col-md-6">
+            <router-outlet></router-outlet>
+            <ng-container *ngIf="spinnerService.showSpinner">
+                <app-spinner></app-spinner>
+            </ng-container>
+        </div>
+    </div>
+</div>

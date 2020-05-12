@@ -1,0 +1,31 @@
+.navbar {
+    padding: 20px 30px;
+    font-size: 20px;
+    box-shadow: 0 0 10px 2px #719ECE;
+    display : flex;
+    align-items : center;
+    justify-content: center;
+    .navbar-brand {
+        font-size: 26px;
+    }
+    
+    #navbarNavDropdown ul li a:active {
+        color: blue;
+    }
+    .form-inline {
+        img, label, button {
+            margin-left: 20px;
+        }
+        .btnUserProfile {
+            height: 40px;
+            width: 40px;
+            color: white;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 22px;
+            text-align: center;
+            line-height: 18px;
+            outline: 0;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.row {
+    margin: 20px 0px;
+    .col-md-3 {
+        .fa-search {
+            position: absolute;
+            color: #717981;
+            left: 15px;
+            top: 10px;
+        } 
+        input {
+            padding-left: 40px;
+        }
+
+        button {
+            float: right;
+            margin: 0px 0px 0px 15px;
+            width: 45%;
+        }
+    }
+}
+
+table {
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px 1px #719ECE;
+    tr th {
+        text-align: center;
+        vertical-align: middle;
+    }   
+    tbody tr:hover {
+        height: 75px;
+    }
+}
+
+.pagination {
+    margin-top: 20px;
+    display : flex;
+    align-items : center;
+    justify-content: center;
+}

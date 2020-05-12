@@ -1,0 +1,65 @@
+<ng-container *ngIf="this.modalService.formProperty == 'add'">
+    <h1>New Order</h1>
+</ng-container>
+<ng-container *ngIf="this.modalService.formProperty == 'edit'">
+    <h1>{{ modalService.fethcedOrder.id}} - {{ modalService.fethcedOrder.customerName }}</h1>
+</ng-container>
+<hr>
+<br>
+<form [formGroup]="addUpdateOrderForm" (ngSubmit)="addUpdateOrder()">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Customer Name : </label>
+                <br>
+                <input type="text" formControlName="customerName" placeholder="Customer Name">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Address : </label>
+                <br>
+                <input type="text" formControlName="address" placeholder="Enter address">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>City : </label>
+                <br>
+                <input type="text" formControlName="city" placeholder="Enter city">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Shipper : </label>
+                <br>                
+                <input type="text" formControlName="shipper" placeholder="Enter shipper name">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Order Date : </label>
+                <br>
+                <div class="input-group orderDate">
+                    <input type="text" placeholder="yyyy-mm-dd" formControlName="orderDate" ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button (click)="d.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Order Total : </label>
+                <br>
+                <input type="number" formControlName="orderTotal" placeholder="Enter order total">
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!addUpdateOrderForm.valid">Submit</button>
+</form>

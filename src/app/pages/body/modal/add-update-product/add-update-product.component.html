@@ -1,0 +1,95 @@
+<ng-container *ngIf="this.modalService.formProperty == 'add'">
+    <h1>New Product</h1>
+</ng-container>
+<ng-container *ngIf="this.modalService.formProperty == 'edit'">
+    <h1>{{ modalService.fetchedProduct.id}} - {{ modalService.fetchedProduct.name }}</h1>
+</ng-container>
+<hr>
+<br>
+<form [formGroup]="addUpdateProductForm" (ngSubmit)="addUpdateProduct()">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Name : </label>
+                <br>
+                <input type="text" formControlName="name" placeholder="Product Name">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Supplier : </label>
+                <div class="supplier">
+                    <ng-container *ngIf="!addNewSupplier">
+                        <select class="form-control" [(ngModel)]="supplier" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let supplier of supplierService.getSuppliers()">
+                                {{ supplier.name }}
+                            </option>
+                        </select>
+                        <button type="button" class="btn btn-success" (click)="handleSupplier()">+</button>
+                    </ng-container>
+                    <ng-container *ngIf="addNewSupplier">
+                        <input type="text" formControlName="supplier" placeholder="Enter supplier name">
+                        <button type="button" class="btn btn-danger" (click)="handleSupplier()">&times;</button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Price : </label>
+                <br>
+                <input type="number" formControlName="price" placeholder="Enter price">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Category : </label>
+                <div class="category">
+                    <ng-container *ngIf="!addNewCategory">
+                        <select class="form-control" [(ngModel)]="category" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let category of categoryService.getCategories()">
+                                {{ category.name }}
+                            </option>
+                        </select>
+                        <button type="button" class="btn btn-success" (click)="handleCategory()">+</button>
+                    </ng-container>
+                    <ng-container *ngIf="addNewCategory">
+                        <input type="text" formControlName="category" placeholder="Enter category name">
+                        <button type="button" class="btn btn-danger" (click)="handleCategory()">&times;</button>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="discount">
+        <label>Discounted :</label><br>
+        <input type="radio" value="Yes" name="discounted" (change)="isShowDiscount($event)"
+            formControlName="discounted">
+        <label>Yes</label>
+        <input type="radio" value="No" name="discounted" (change)="isShowDiscount($event)"
+            formControlName="discounted">
+        <label>No</label>
+
+        <ng-container *ngIf="showDiscount">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-percent"></i></span>
+                        </div>
+                        <input type="number" class="form-control" formControlName="discount" placeholder="Enter discount below 30%">
+                    </div>
+                    <br>
+                    <div [hidden]="addUpdateProductForm.get('discount').value < 30" class="alert alert-danger">
+                        Discount value must be less than 30
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!addUpdateProductForm.valid || showDiscount && addUpdateProductForm.get('discount').value > 30">Submit</button>
+</form>

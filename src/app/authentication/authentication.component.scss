@@ -1,0 +1,28 @@
+.fluid-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    height: 75vh;
+    background-color: white;
+    box-shadow: 0 0 10px 5px #719ECE;
+    border-radius: 15px;
+    border: none;
+}
+
+.row {
+    margin: 0px;
+    height: 100%;
+}
+
+.col-md-6 {
+    padding: 0px;
+    height: 100%;
+}
+
+.col-md-6 img {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px 0px 0px 15px;
+}

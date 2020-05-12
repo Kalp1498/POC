@@ -1,0 +1,71 @@
+<ng-container *ngIf="spinnerService.showSpinner">
+    <app-spinner></app-spinner>
+</ng-container>
+
+<div [@animateDiv]="{value: opacityAnimationValue, params:{opacity:1, time: '1s'}}" class="fluid-container">
+    <div class="row">
+        <div class="col-md-9">
+            <h1>Orders</h1>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" (click)="addUpdateOrder('add')">Create Order</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input class="form-control" type="text" placeholder="ID / Customer" aria-label="Search" [(ngModel)]="query" (input)="getOrdersFromSearch()">
+        </div>
+        <div class="col-md-5"></div>
+        <div class="col-md-4">
+            <button class="btn btn-success" (click)="exportToExcel()">Export to Excel</button>
+            <button class="btn btn-info" (click)="addUpdateOrder('search')">Advance Search</button>
+            <ng-container *ngIf="clearSearchResults">
+                <button class="close" (click)="clearSearch()">&times;</button>
+            </ng-container>
+        </div>
+    </div>
+
+    <table class="table table-light table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Shipper</th>
+                <th>Order Date</th>
+                <th>Order Total $</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let order of orders | slice: (page - 1) * pageSize : (page - 1) * pageSize + pageSize">
+                <th>
+                    {{ order.id }}
+                </th>
+                <th>
+                    {{ order.customerName }}
+                </th>
+                <th>
+                    {{ order.shipper }}
+                </th>
+                <th>
+                    {{ order.orderDate }}
+                </th>
+                <th>
+                    {{ order.orderTotal }}
+                </th>
+                <th>
+                    <button class="btn btn-info"  (click)="addUpdateOrder('edit', order)">Edit</button>
+                </th>
+            </tr>
+            </tbody>
+    </table>
+
+    <ng-container *ngIf="modalService.showModal">
+        <app-modal></app-modal>
+    </ng-container>
+
+    <div class="pagination">
+        <ngb-pagination [collectionSize]="collectionSize" [pageSize]="10" [(page)]="page" (pageChange)="getOrders()"></ngb-pagination>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<ng-container *ngIf="spinnerService.showSpinner">
+    <app-spinner></app-spinner>
+</ng-container>
+
+<div [@animateDiv]="{value: opacityAnimationValue, params:{opacity:1, time: '1s'}}" class="fluid-container">
+    <h1>Products</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input class="form-control" type="text" placeholder="Enter Name / ID" aria-label="Search" [(ngModel)]="query" (input)="getProductsFromSearch()">
+        </div>
+        <div class="col-md-3">
+            <select class="form-control" [(ngModel)]="supplier" (change)="getProductsFromSearch()">
+                <option>Supplier</option>
+                <option *ngFor="let supplier of supplierService.getSuppliers()">
+                    {{ supplier.name }}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select class="form-control" [(ngModel)]="category" (change)="getProductsFromSearch()">
+                <option>Category</option>
+                <option *ngFor="let category of categoryService.getCategories()">
+                    {{ category.name }}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-3" style="padding-right: 0px;">
+            <button class="btn btn-success" (click)="exportToExcel()">Export to Excel</button>
+            <button class="btn btn-primary" (click)="addUpdateProduct('add')">Create Product</button>
+        </div>
+    </div>
+
+    <table class="table table-light table-hover">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Supplier</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Discounted</th>
+              <th>Discount</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products | slice: (page - 1) * pageSize : (page - 1) * pageSize + pageSize">
+                <th>
+                    {{ product.id }}
+                </th>
+                <th>
+                    {{ product.name }}
+                </th>
+                <th>
+                    {{ product.supplier }}
+                </th>
+                <th>
+                    {{ product.category }}
+                </th>
+                <th>
+                    {{ product.price }}
+                </th>
+                <th>
+                    {{ product.discounted }}
+                </th>
+                <th>
+                    <ng-container *ngIf="product.discounted=='No'">-</ng-container>
+                </th>
+                <th>
+                    <button class="btn btn-info"  (click)="addUpdateProduct('edit', product)">Edit</button>
+                </th>
+            </tr>
+          </tbody>
+    </table>
+    
+    <ng-container *ngIf="modalService.showModal">
+        <app-modal></app-modal>
+    </ng-container>
+
+    <div class="pagination">
+        <ngb-pagination [collectionSize]="collectionSize" [pageSize]="10" [(page)]="page" (pageChange)="getProdcuts()"></ngb-pagination>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<h1>Advance Search</h1>
+<hr>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-6 col1">
+            <label>Customer Name : </label>
+            <br>
+            <select class="form-control" [(ngModel)]="selectedFields.selectedCustomerNames" size="3" multiple>
+                <option *ngFor="let customer of orderService.getCustomers()">
+                    {{ customer }}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-6 col2">
+            <label>Shipper : </label>
+            <br>
+            <select class="form-control" [(ngModel)]="selectedFields.selectedShippers" size="3" multiple>
+                <option *ngFor="let shipper of orderService.getShippers()">
+                    {{ shipper }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <br>
+    <label>Order Date : </label>
+    <br>
+    <div class="row inputRow">
+        <div class="col-md-6 col1">
+            <label>From : </label>
+            <div class="input-group orderDate">
+                <input type="text" placeholder="yyyy-mm-dd" [(ngModel)]="selectedFields.selectedFromDate" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                    <button (click)="d.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col2">
+            <label>To : </label>
+            <div class="input-group orderDate">
+                <input type="text" placeholder="yyyy-mm-dd" [(ngModel)]="selectedFields.selectedToDate" (dateSelect)="onDateSelect($event)" ngbDatepicker #d1="ngbDatepicker">
+                <div class="input-group-append">
+                    <button (click)="d1.toggle()" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <label>Order Amount : </label>
+    <br>
+    <div class="row inputRow">
+        <div class="col-md-6 col1">
+            <label>From : </label>
+            <input type="number" placeholder="Enter start price" [(ngModel)]="selectedFields.selectedFromAmount">
+        </div>
+        <div class="col-md-6 col2">
+            <label>To : </label>
+            <input type="number" placeholder="Enter end price" [(ngModel)]="selectedFields.selectedToAmount">
+        </div>
+    </div>
+
+    <br>
+    <button class="btn btn-success" (click)="onSearchSubmit()">Submit</button>
+</div>

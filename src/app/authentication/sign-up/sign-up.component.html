@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Sign Up</h1>
+    <form #SignUpForm="ngForm" (ngSubmit)="authenticationService.SignUpWithEmailAndPassword(SignUpForm)">
+        <input type="email" appNoSpaceValidator email class="form-control" [(ngModel)]="email" name="txtEmail" #txtEmail="ngModel" placeholder="example@abc.com" required>
+        <div [hidden]="txtEmail.valid || txtEmail.pristine" class="alert alert-danger">
+            Email is required
+        </div>
+        <div [hidden]="!txtEmail.errors || txtEmail.pristine" class="alert alert-danger">
+            Email should be in proper format like 'example@abc.com'
+        </div>
+        <div [hidden]="!txtEmail.errors?.cannotContainSpace || txtEmail.pristine" class="alert alert-danger">
+            Email can not contain any space
+        </div>
+
+        <input type="password" appNoSpaceValidator class="form-control" [(ngModel)]="password" name="txtPassword" #txtPassword="ngModel" placeholder="Password" required>
+        <div [hidden]="txtPassword.valid || txtPassword.pristine" class="alert alert-danger">
+            Password is required
+        </div>
+        <div [hidden]="!txtPassword.errors?.cannotContainSpace || txtPassword.pristine" class="alert alert-danger">
+            Password can not contain any space
+        </div>
+
+        <input type="password" class="form-control" [(ngModel)]="confPassword" name="txtConfPassword" #txtConfPassword="ngModel" placeholder="Confirm Password" required>
+        <div [hidden]="txtConfPassword.valid || txtConfPassword.pristine" class="alert alert-danger">
+            Repeat password is required
+        </div>
+        <ng-container *ngIf="txtConfPassword.valid && txtPassword.valid">
+            <div [hidden]="txtPassword.value == txtConfPassword.value" class="alert alert-danger">
+                Password mismatch
+            </div>
+        </ng-container>
+
+        <button type="submit" class="btn btn-success" [disabled]="!SignUpForm.form.valid || txtPassword.value != txtConfPassword.value">Sign Up</button>
+    </form>
+    <p>Already have an account? <button (click)="navigateLogin()">Click here</button> to Login</p>
+    <hr>
+    <p>Sign Up with social platforms</p>
+    <div class="social-media-icons">
+        <i class="fa fa-facebook-f"></i>
+        <i class="fa fa-google"></i>
+        <i class="fa fa-twitter"></i>
+    </div>
+</div>

@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+#toast-container > div {
+    width: 400px;
+}
+
+ngb-datepicker {
+    position: absolute;
+    background-color: white;
+
+    select {
+        background-color: rgba(52,104,191,1);
+        color: white;
+    }
+}

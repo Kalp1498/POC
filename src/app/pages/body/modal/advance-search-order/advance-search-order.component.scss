@@ -1,0 +1,21 @@
+.row {
+    margin: 0px;
+    .col-md-6 {
+        select option {
+            padding: 5px;
+        }
+    }
+    .col1 {
+        padding-left: 0px;
+    }
+    
+    .col2 {
+        padding-right: 0px;
+    }
+}
+
+.inputRow {
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: 5px;
+}

@@ -1,0 +1,14 @@
+.spinners {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  .spinnerIcons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .text-primary {
+      background-color: rgb(37, 113, 194);
+    }
+  }
+}

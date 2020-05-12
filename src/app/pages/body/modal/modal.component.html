@@ -1,0 +1,14 @@
+<div id="modal" class="modal">
+    <div class="container" [ngClass]="{'containerRight': modalService.showAdvanceSearchModal || modalService.showAddUpdateOrderModal}">
+        <button class="close" (click)="modalService.hideModal()">&times;</button>
+        <ng-container *ngIf="modalService.showAddUpdateProductModal">
+            <app-add-update-product></app-add-update-product>
+        </ng-container>
+        <ng-container *ngIf="modalService.showAddUpdateOrderModal">
+            <app-add-update-order></app-add-update-order>
+        </ng-container>
+        <ng-container *ngIf="modalService.showAdvanceSearchModal">
+            <app-advance-search-order></app-advance-search-order>
+        </ng-container>
+    </div>
+</div>
